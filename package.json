@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tamakiii-sandbox/hello-css-202211#readme",
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "postcss": "^8.4.19"
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.0.0"
   }
 }
