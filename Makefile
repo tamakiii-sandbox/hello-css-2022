@@ -6,9 +6,8 @@ help:
 build: \
 	dist/**/*.css
 
-dist/**/*.css: \
-	dist/main \
-	dist/csstools
+dist/**/*.css:
+	$(MAKE) -j dist/main dist/csstools
 
 dist/main: | src/main
 	npx --no postcss $| --dir $@
