@@ -1,17 +1,18 @@
 .PHONY: help build check clean
-.PHONY: src/**/*.css
+
+postcss = npx --no postcss $(1) --output $(2)
 
 help:
 	@cat $(firstword $(MAKEFILE_LIST))
 
 build: \
-	dist/style.css
+	dist/**/*.css
+
+dist/**/*.css: | src/**/*.css
+	$(foreach f,$|,$(call postcss,$(f),$(patsubst src/%,dist/%,$f);))
 
 check: | src/**/*.css
 	npx --no -- stylelint -f verbose '$|'
-
-dist/style.css: | src/style.css dist
-	npx --no postcss $(word 1,$|) --output $@
 
 dist:
 	mkdir $@
